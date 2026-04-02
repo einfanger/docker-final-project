@@ -1,55 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Bulletin Board</title>
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="site.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Last of Us Survival Board</title>
   <style>
-  .form-control {
-    margin-bottom: 10px;
-  }
-  .btn-danger {
-    margin-top: 8px;
-  }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1b1f1a;
+      color: #f2f2e8;
+    }
+
+    header {
+      background-color: #2d3a2f;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 4px solid #556b2f;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #cfcfbf;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      background-color: #2a2f28;
+      border: 1px solid #44503f;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #b7d48a;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #aaa;
+      padding: 20px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>The Last of Us Survival Board</h1>
+    <p>Field notes, survival tips, and ways to not get folded by infected.</p>
+  </header>
 
-  <div class="jumbotron">
-    <h1><h1>Eli's Automated DevOps Bulletin Board</h1></h1>
+  <main class="container">
+    <section class="card">
+      <h2>Survival Tips</h2>
+      <ul>
+        <li>Stay quiet. Infected hear everything, and humans are usually worse.</li>
+        <li>Always check drawers, shelves, and abandoned buildings for supplies.</li>
+        <li>Use stealth whenever possible to save ammo and avoid drawing attention.</li>
+        <li>Craft medkits and shivs as early as you can.</li>
+        <li>Never assume an area is clear just because it looks empty.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Combat Tricks</h2>
+      <ul>
+        <li>Brick and bottle stuns are elite — use them before rushing in.</li>
+        <li>Headshots save ammo and end fights faster.</li>
+        <li>Melee weapons are gold, so don’t waste them on weak enemies unless needed.</li>
+        <li>Listen Mode helps, but don’t rely on it like it’s wall hacks from heaven.</li>
+        <li>Move after every loud shot so enemies don’t pin your location.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Loot Priorities</h2>
+      <ul>
+        <li>Rags and alcohol for medkits and molotovs.</li>
+        <li>Blades and binding for shivs.</li>
+        <li>Explosives for traps and bombs.</li>
+        <li>Ammo only when you really need it — don’t spray and pray.</li>
+        <li>Supplements and parts for upgrades that actually matter.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Important Reminder</h2>
+      <ul>
+        <li>Clickers are basically nightmare chickens with sonar, so do not get close.</li>
+        <li>Humans flank more than you think, so watch your sides.</li>
+        <li>Running blindly gets you killed. Slow and smart wins.</li>
+        <li>If you can avoid a fight, that is sometimes the best fight.</li>
+        <li>Hope is good. Ammo is better.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="footer-note">
+    Built by Eli — survival not guaranteed.
   </div>
-
-  <div class="container" id="events">
-    <div class="col-sm-7">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>Add an Event</h3>
-        </div>
-        <div class="panel-body">
-          <div>
-            <input class="form-control" placeholder="Title" v-model="event.title">
-            <textarea class="form-control" placeholder="Detail" v-model="event.detail"></textarea>
-            <input type="date" class="form-control" placeholder="Date" v-model="event.date">
-            <button class="btn btn-primary" v-on:click="addEvent">Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-5">
-      <div class="list-group">
-        <a href="#" class="list-group-item" v-for="event in events">
-          <h4 class="list-group-item-heading"><i class="glyphicon glyphicon-bullhorn"></i> {{ event.title }}</h4>
-          <h5><i class="glyphicon glyphicon-calendar" v-if="event.date"></i> {{ event.date }}</h5>
-          <p class="list-group-item-text" v-if="event.detail">{{ event.detail }}</p>
-          <button class="btn btn-xs btn-danger" v-on:click="deleteEvent(event.id)">Delete</button>
-        </a>
-      </div>
-    </div>
-  </div>
-
 </body>
-<script src="node_modules/vue/dist/vue.min.js"></script>
-<script src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
-<script src="app.js"></script>
 </html>
